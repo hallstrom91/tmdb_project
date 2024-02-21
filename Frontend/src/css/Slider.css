@@ -1,0 +1,10 @@
+.my-slider-progress {
+  background: #ccc;
+}
+
+.my-slider-progress-bar {
+  background: rgb(1, 150, 250);
+  height: 2px;
+  transition: width 400ms ease;
+  width: 0;
+}

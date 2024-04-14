@@ -9,26 +9,26 @@ import Loader from "@shared/Loader";
 // Import Rating Star Display
 import RatingStars from "@shared/RatingStars";
 
-export default function MovieDetails() {
+export default function TvDetails() {
   // find movie by id-ref
   const { id } = useParams();
-  //specific movie state
-  const [displayMovie, setDisplayMovie] = useState(null);
-  // token for API
-  const token = import.meta.env.VITE_TMDB_API_TOKEN;
+  // specific tv show state
+  const [displayTv, setDisplayTv] = useState(null);
   // loading state
   const [isLoading, setIsLoading] = useState(true);
+  // token for API
+  const token = import.meta.env.VITE_TMDB_API_TOKEN;
   // img url
   const baseImageUrl = "https://image.tmdb.org/t/p/w500";
 
   useEffect(() => {
-    fetchGET(`movie/${id}`, token, "sv-SV")
+    fetchGET(`tv/${id}`, token, "sv-SV")
       .then((data) => {
-        setDisplayMovie(data);
+        setDisplayTv(data);
         setIsLoading(false);
       })
       .catch((error) => {
-        console.error(`Misslyckad hämtning av film med id ${id}`, error);
+        console.error(`Misslyckad hämtning av tv-serie med id ${id}`, error);
         setIsLoading(false);
       });
   }, [id]);
@@ -42,18 +42,18 @@ export default function MovieDetails() {
           <div className="container mx-auto pt-10">
             {/* Display Title */}
             <h1 className="text-3xl font-bold text-center pb-5">
-              {displayMovie.title}
+              {displayTv.title}
             </h1>
 
             {/* Display Poster & Rating - possible to enlarge poster*/}
             <div className="flex flex-col md:flex-row md:grid md:grid-cols-3 pb-4">
               <div className="flex justify-center order-1 object-scale-down md:col-span-1 md:justify-start">
-                <PosterModal item={displayMovie} />
+                <PosterModal item={displayTv} />
               </div>
               {/* Display Object Bio */}
               <div className="order-2 pl-3 md:col-span-2">
                 <h2 className="text-xl font-bold pb-2">Bio</h2>
-                <p>{displayMovie.overview}</p>
+                <p>{displayTv.overview}</p>
               </div>
             </div>
 
@@ -62,35 +62,38 @@ export default function MovieDetails() {
               <h2 className="text-xl font-bold pb-2">Detaljer</h2>
               {/* Display Object rating */}
               <p className="flex border-2 border-black md:w-1/6 w-2/5 p-2 rounded-lg bg-gradient-to-t from-yellow-700 to-yellow-500 justify-center">
-                <RatingStars value={displayMovie.vote_average} />
+                <RatingStars value={displayTv.vote_average} />
               </p>
 
               {/* Display Object release date */}
               <p>
                 <span className="font-bold">Släppt:</span>{" "}
-                {displayMovie.release_date}
+                {displayTv.first_air_date}
               </p>
               {/* Display Object popularity */}
               <p>
                 <span className="font-bold">Popularitet:</span>{" "}
-                {displayMovie.popularity}
+                {displayTv.popularity}
               </p>
               {/* Display Object genre*/}
               <p>
                 <span className="font-bold">Genre:</span>{" "}
-                {displayMovie.genres.map((genre) => genre.name).join(", ")}
+                {displayTv.genres.map((genre) => genre.name).join(", ")}
               </p>
-              {/* Display Object spoken language*/}
+              {/* Display Object number of season*/}
               <p>
-                <span className="font-bold">Språk:</span>{" "}
-                {displayMovie.spoken_languages
-                  .map((language) => language.name)
-                  .join(", ")}
+                <span className="font-bold">Antal Säsonger:</span>{" "}
+                {displayTv.number_of_seasons} st
               </p>
-              {/* Display Object runtime movie*/}
+              {/* Display Object number of episodes*/}
               <p>
-                <span className="font-bold">Längd:</span> {displayMovie.runtime}{" "}
-                minuter
+                <span className="font-bold">Antal Avsnitt:</span>{" "}
+                {displayTv.number_of_episodes} st
+              </p>
+              {/* Display Object runtime of episode*/}
+              <p>
+                <span className="font-bold">Längd på avsnitt:</span>{" "}
+                {displayTv.episode_run_time} minuter
               </p>
             </div>
           </div>

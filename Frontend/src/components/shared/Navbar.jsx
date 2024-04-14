@@ -1,14 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+// icons
 import { IoHomeOutline } from "react-icons/io5"; /* <IoHomeOutline /> */
 import { TfiMenuAlt } from "react-icons/tfi"; /* <TfiMenuAlt /> */
 import { BiMoviePlay } from "react-icons/bi"; /* <BiMoviePlay /> */
 import { BiSearch } from "react-icons/bi"; /* <BiSearch /> */
 import { FaTv } from "react-icons/fa"; /* <FaTv /> */
 import { IoIosContact } from "react-icons/io"; /* <IoIosContact /> */
-
-import Search from "./Search";
 
 export default function Navbar() {
   const [IsOpen, setIsOpen] = useState(false);
@@ -17,15 +16,13 @@ export default function Navbar() {
   return (
     <>
       <header className="bg-neutral-300 border-b-2 border-b-indigo-900">
-        <div className="flex justify-end p-4">
-          <Search />
-        </div>
+        <div className="flex justify-end p-4">{/* Search INPUT? */}</div>
         <nav className="w-full shadow">
           <div>
             <div className="flex items-center justify-between py-3 md:py-5 md:block">
               <Link to="/">
                 <h2 className="text-3xl font-semibold pl-4 text-black">
-                  FILMGUIDEN
+                  VSVS.se
                 </h2>
               </Link>
               <div className="md:hidden">

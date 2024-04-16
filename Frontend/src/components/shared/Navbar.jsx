@@ -55,7 +55,7 @@ export default function Navbar() {
                 <li className="text-black hover:text-sky-950">
                   <BiMoviePlay className="inline-block m-3" />
                   <Link
-                    to="#"
+                    to="/movies"
                     onClick={handleClick}
                     className="transition duration-200 ease-in hover:text-xl hover:underline"
                   >

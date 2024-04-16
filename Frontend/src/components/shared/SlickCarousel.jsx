@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+// Import Rating Star Display
+import RatingStars from "@shared/RatingStars";
 
 export default function SlickCarousel({ items }) {
   // image url width 500
@@ -41,29 +43,29 @@ export default function SlickCarousel({ items }) {
     <div className="p-10 bg-stone-300">
       <Slider {...settings}>
         {items.map((item) => (
-          /* Send Visitor to selected Movie in Slider */
           <Link
             key={item.id}
             to={item.original_title ? `movies/${item.id}` : `tv/${item.id}`}
           >
+            {/* Send Visitor to selected Movie in Slider */}
             {/* Display Movie / TvShow Images in Slider */}
-            <div className="m-2">
+            <div className="p-4">
               <img
                 src={`${baseImageUrl}${item.poster_path}`}
                 alt={item.original_title}
-                className="object-scale-down max-h-96"
+                className="object-scale-down max-h-min"
               />
             </div>
             {/* Display Movie / TvShow Titel */}
-            <div className="bg-neutral-500 rounded-md mx-2 p-2 drop-shadow-lg">
-              <h3 className="text-center text-xs overflow-y-hidden">
+
+            <div className="bg-neutral-500 rounded-md mx-2 p-2 drop-shadow-lg text-center">
+              <h3 className="text-xs">
                 {item.original_title || item.original_name}
               </h3>
             </div>
             {/* Movie / Tvshow Rating */}
-
-            <div className="bg-gradient-to-t from-yellow-700 to-yellow-500 rounded-lg mt-1 mx-2 p-1 drop-shadow-lg">
-              <p className="text-center">Betyg: {item.vote_average}</p>
+            <div className="bg-gradient-to-t from-yellow-700 to-yellow-500 rounded-lg mt-1 mx-2 p-1 drop-shadow-lg text-center justify-center flex">
+              <RatingStars value={item.vote_average} />
             </div>
           </Link>
         ))}

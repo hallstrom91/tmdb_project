@@ -11,6 +11,7 @@ export default defineConfig({
       "@movies": "/src/components/movies",
       "@tvshows": "/src/components/tvshows",
       "@user": "/src/components/user",
+      "@buttons": "/src/components/buttons",
       "@pages": "/src/pages",
       "@routes": "/src/routes",
       "@utils": "/src/utils",

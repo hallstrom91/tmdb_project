@@ -12,7 +12,7 @@ export default function Home() {
           </h1>
           <h2 className="text-xl font-semibold">VadSkaVi.SE</h2>
 
-          <p className="mt-3 text-lg text-black">
+          <p className="mt-3 text-lg text-black px-8">
             Välkommen till vår film- och serieportal! Upptäck de senaste
             filmerna och serierna, bläddra bland klassiker och utforska olika
             genrer. Registrera dig för att få en personlig upplevelse, spara
